@@ -52,12 +52,12 @@ public class CassandraSourceTask extends SourceTask {
             Collection<SourceDataEntry> records = null;
             if (querier != null) {
                 try {
-                    //TODO read.sleep(10000) here is using for avoid fast polling action, because runtime store sourcedata position every 10000ms
-                    // replace thread.sleep() with better solution or enhance runtime
+                    // TODO thread.sleep(10000) here is using for avoiding fast polling action because runtime store source data-position every 10000ms,
+                    //  The time window will result in extracting duplicate data when there are limited number of data from the origin.
+                    //  Replace thread.sleep() with a better solution or enhance runtime
                     try {
-                        System.out.println(Thread.currentThread().getName());
                         Thread.currentThread();
-                        Thread.sleep(10000);//毫秒
+                        Thread.sleep(10000);
                     } catch (Exception e) {
                         throw e;
                     }
@@ -94,9 +94,9 @@ public class CassandraSourceTask extends SourceTask {
                 //TODO rename skipRowInfo
                 Map<String, Object> skipRowInfo = (Map) lastRecordedOffset;
 
-                log.info("isExhausted " + (boolean) skipRowInfo.get("isExhausted"));
-                log.info("pagingState " + (String) skipRowInfo.get("pagingState"));
-                log.info("rowUpOffset " + (int) skipRowInfo.get("rowUpOffset"));
+                log.trace("isExhausted " + (boolean) skipRowInfo.get("isExhausted"));
+                log.trace("pagingState " + (String) skipRowInfo.get("pagingState"));
+                log.trace("rowUpOffset " + (int) skipRowInfo.get("rowUpOffset"));
 
                 querier.setisExhausted((boolean) skipRowInfo.get("isExhausted"));
                 if (((String) skipRowInfo.get("pagingState")).equals("null")) {

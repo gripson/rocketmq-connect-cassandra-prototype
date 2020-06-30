@@ -171,7 +171,6 @@ public class BulkQuerier implements Querier {
                     columnDatatype = row.getColumnDefinitions().getType(i).getName().name();
                     columnName = row.getColumnDefinitions().getName(i);
 
-                    //Field i 有没有必要递增还是可以跟fileConnect一样设为0即可 (需要设置为i 匹配payload)
                     Field field = new Field(i, columnName, Parser.dataType2FieldType(columnDatatype));
                     schema.getFields().add(field);
                 }
