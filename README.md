@@ -1,13 +1,16 @@
 # Rocketmq Connect Cassandra  
-Rocketmq Connect Cassandra Connector. This project includes source connector (will support sink connector soon).
+This project is used to receive and send messages between RocketMQ and Cassandra, includes:
+
+* A [Source Connector]() that extracts data from Cassandra and provides the data to RocketMQ.
+* An [Sink Connector]() that consumes messages from RocketMQ and writes data to Cassandra (WIP).
 
 ## Environment requirements
 1. 64bit JDK 1.8+/OpenJDK1.8+;
 2. Maven 3.2.x+;
-3. At least one running RocketMQ cluster;
+3. Two running RocketMQ clusters;
 4. RocketMQ Runtime
 
-Notes: Reference of  [RocketMQ](https://rocketmq-1.gitbook.io/rocketmq-connector/quick-start/qian-qi-zhun-bei/dan-ji-huan-jing) and [RocketMQ Runtime](https://rocketmq-1.gitbook.io/rocketmq-connector/quick-start/runtime-qs) installation.
+**Notes: Reference of  [RocketMQ](https://rocketmq-1.gitbook.io/rocketmq-connector/quick-start/qian-qi-zhun-bei/dan-ji-huan-jing) and [RocketMQ Runtime](https://rocketmq-1.gitbook.io/rocketmq-connector/quick-start/runtime-qs) installation.
 ## Build
 ```
 mvn clean install -Dmaven.test.skip=true
@@ -64,7 +67,7 @@ Source connector configuration instructions
 | source-record-converter | false    |         | Full class name of the impl of the converter used to convert SourceDataEntry to byte[] |
 
 
-##CQL Types Supported (WIP)
+## CQL Types Supported (WIP)
 |CQL3 data type| Getter name|	Java type	|See also|
 |----|----|----|----|
 |ascii|	getString|	java.lang.String|	
