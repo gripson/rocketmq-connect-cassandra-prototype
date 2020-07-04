@@ -1,4 +1,4 @@
-# Rocketmq Connect Cassandra  
+# Rocketmq Connect Cassandra  [![GitHub license](https://img.shields.io/badge/license-Apache%20V2-green.svg)](https://github.com/gripson/rocketmq-connect-cassandra-prototype/blob/master/LICENSE)
 This project is used to receive and send messages between RocketMQ and Cassandra, includes:
 
 * A [Source Connector]() that extracts data from Cassandra and provides the data to RocketMQ.
